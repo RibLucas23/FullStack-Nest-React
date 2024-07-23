@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
-/// <reference types="@testing-library/cypress"/>
-describe('Pomeranian Website Tests', () => {
+describe('Home Tests', () => {
 	beforeEach(() => {
 		cy.visit('/');
 	});
