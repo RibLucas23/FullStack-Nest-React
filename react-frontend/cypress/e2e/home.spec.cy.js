@@ -1,5 +1,4 @@
 /// <reference types="cypress" />
-
 /// <reference types="@testing-library/cypress"/>
 describe('Pomeranian Website Tests', () => {
 	beforeEach(() => {
