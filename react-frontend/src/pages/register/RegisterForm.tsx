@@ -147,7 +147,7 @@ export default function RegisterForm() {
 							type='submit'
 							className='w-full text-[#FFFFFF] bg-[#4F46E5] focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-6'
 						>
-							Login
+							Register
 						</button>
 						<div className='text-sm font-light text-[#6B7280]'>
 							You have an account?
