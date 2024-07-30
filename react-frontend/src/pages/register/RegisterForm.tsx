@@ -18,7 +18,7 @@ export default function RegisterForm() {
 	) => {
 		try {
 			await registerUser(values);
-			successAlert('Login successful');
+			successAlert('Register successful');
 			setFormSubmited(true);
 			// navigate('/');
 		} catch (error) {
