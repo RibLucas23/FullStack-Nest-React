@@ -12,15 +12,18 @@ import {
 } from '@nestjs/common';
 import { ArticlesService } from './articles.service';
 import { CreateArticleDto } from 'src/dto/create-article.dto';
+import { Public } from 'src/common/decorators/public.decorator';
 
 @Controller('articles')
 export class ArticlesController {
   constructor(private articlesService: ArticlesService) {}
 
+  @Public()
   @Get()
   async findAll() {
     return await this.articlesService.findAll();
   }
+  @Public()
   @Get(':id')
   async findOne(@Param('id') id: string) {
     try {

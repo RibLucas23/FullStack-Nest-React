@@ -14,16 +14,18 @@ import {
 import { CreateDogDto } from 'src/dto/create-dog.dto';
 import { DogsService } from './dogs.service';
 import { Query as ExpressQuery } from 'express-serve-static-core';
+import { Public } from 'src/common/decorators/public.decorator';
 
 @Controller('dogs')
 export class DogsController {
   constructor(private dogsService: DogsService) {}
 
+  @Public()
   @Get()
   async findAll(@Query() query: ExpressQuery) {
     return await this.dogsService.findAll(query);
   }
-
+  @Public()
   @Get(':id')
   async findOne(@Param('id') id: string) {
     try {
