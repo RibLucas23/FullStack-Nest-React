@@ -1,6 +1,6 @@
-import LoginForm from './LoginForm';
+import RegisterForm from './RegisterForm';
 
-export default function Login() {
+export default function Register() {
 	return (
 		<>
 			<div className='flex flex-col w-full md:w-1/2 xl:w-2/5 2xl:w-2/5 3xl:w-1/3 mx-auto p-8 md:p-10 2xl:p-12 3xl:p-14 bg-[#ffffff] rounded-2xl shadow-xl'>
@@ -10,10 +10,9 @@ export default function Login() {
 					</div>
 				</div>
 				<div className='text-sm font-light text-[#6B7280] pb-8'>
-					Login to your account
+					Register your account
 				</div>
-				<LoginForm />
-
+				<RegisterForm />
 				<div className='flex flex-row gap-2 justify-center'>
 					<button className='flex flex-row w-32 gap-2 bg-gray-600 p-2 rounded-md text-gray-200'>
 						<svg
