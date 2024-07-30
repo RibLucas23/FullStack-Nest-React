@@ -26,7 +26,7 @@ export default function DogsContainer({ limit }: DogsContainerProps) {
 					{dogs?.length > 0 &&
 						dogs.map((dog) => (
 							<Link
-								to={`dog-detail/${dog._id}`}
+								to={`/dog-detail/${dog._id}`}
 								key={dog._id}
 								className=' rounded-2xl p-2  w-5/12 md:w-48 shadow-xl lg:w-64'
 							>
