@@ -140,7 +140,9 @@ export default function RegisterForm() {
 						</div>
 						<div className='grid place-content-center'>
 							{formSubmited && (
-								<p className=' text-green-600 mb-4'>Login succesfull</p>
+								<p className=' text-green-600 mb-4'>
+									Register succesfull
+								</p>
 							)}
 						</div>
 						<button
