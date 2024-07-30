@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import { errorAlert, successAlert } from '../../services/toastifyAlerts';
 import { registerUser } from '../../api/users';
 import { registerFormSchema } from './register-form.schema';
+import { Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 export default function RegisterForm() {
 	const [formSubmited, setFormSubmited] = useState(false);
@@ -149,13 +150,13 @@ export default function RegisterForm() {
 							Login
 						</button>
 						<div className='text-sm font-light text-[#6B7280]'>
-							Don't have an account yet?{' '}
-							<a
-								href='#'
+							You have an account?
+							<Link
+								to='/login'
 								className='font-medium text-[#4F46E5] hover:underline'
 							>
-								Sign Up
-							</a>
+								Sign In
+							</Link>
 						</div>
 					</Form>
 				)}
