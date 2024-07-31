@@ -1,3 +1,16 @@
-const API = 'http://localhost:3000';
+import axios from 'axios';
+import axiosInstance from '../services/axios.service';
 
-export const getArticlesRequest = async () => fetch(`${API}/articles`);
+const API = import.meta.env.VITE_API_URL;
+
+export const getArticlesRequest = async () => {
+	try {
+		const response = await axiosInstance.get(`${API}/articles`);
+		return response.data;
+	} catch (error) {
+		if (axios.isAxiosError(error) && error.response) {
+			throw new Error(error.response.data.message || 'Request failed');
+		}
+		throw new Error('Request failed');
+	}
+};

@@ -9,13 +9,9 @@ export default function DogsContainer({ limit }: DogsContainerProps) {
 	const [dogs, setDogs] = useState<DogInterface[]>([]);
 	useEffect(() => {
 		if (limit) {
-			getDogsReqLimit(limit.toString())
-				.then((response) => response.json())
-				.then((data) => setDogs(data));
+			getDogsReqLimit(limit.toString()).then((data) => setDogs(data));
 		} else {
-			getDogsRequest()
-				.then((response) => response.json())
-				.then((data) => setDogs(data));
+			getDogsRequest().then((data) => setDogs(data));
 		}
 	}, [limit]);
 

@@ -6,9 +6,7 @@ import { getArticlesRequest } from '../../api/articles';
 export default function ArticleContainer() {
 	const [articles, setArticles] = useState<ArticleInterface[]>([]);
 	useEffect(() => {
-		getArticlesRequest()
-			.then((response) => response.json())
-			.then((data) => setArticles(data));
+		getArticlesRequest().then((data) => setArticles(data));
 	}, []);
 	return (
 		<>
