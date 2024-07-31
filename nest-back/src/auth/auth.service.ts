@@ -67,9 +67,11 @@ export class AuthService {
   }
   async signinLocal(dto: AuthDto): Promise<Tokens> {
     const user = await this.authModel.findOne({ email: dto.email });
-    if (!user || !user.hashedRt) throw new ForbiddenException('Access Denied');
+
+    if (!user && !user.hashedRt) throw new ForbiddenException('Access Denied');
 
     const passwordMatches = await bcrypt.compare(dto.password, user.hash);
+
     if (!passwordMatches) throw new ForbiddenException('Access Denied');
     const tokens = await this.getTokens(user.id, user.email);
     await this.updateRtHash(user.id, tokens.refresh_token);

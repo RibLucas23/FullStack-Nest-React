@@ -1,30 +1,75 @@
-const API = 'http://localhost:3000';
+import axios from 'axios';
+import axiosInstance from '../services/axios.service';
+// import { DogInterface } from '../interfaces/dog.interface';
 
-export const getDogsRequest = async () => fetch(`${API}/dogs`);
-export const getDogsReqLimit = async (limit: string) =>
-	fetch(`${API}/dogs?limit=${limit}`);
+const API = import.meta.env.VITE_API_URL;
 
-// export const createDogRequest = async (dog: Createdog) =>
-// 	fetch(`${API}`, {
-// 		method: 'POST',
-// 		body: JSON.stringify(dog),
-// 		headers: {
-// 			'Content-Type': 'application/json',
-// 		},
-// 	});
+export const getDogsRequest = async () => {
+	try {
+		const response = await axiosInstance.get(`${API}/dogs`);
+		return response.data;
+	} catch (error) {
+		if (axios.isAxiosError(error) && error.response) {
+			throw new Error(error.response.data.message || 'Request failed');
+		}
+		throw new Error('Request failed');
+	}
+};
+export const getDogsReqLimit = async (limit: string) => {
+	try {
+		const response = await axiosInstance.get(`/dogs?limit=${limit}`);
+		return response.data;
+	} catch (error) {
+		if (axios.isAxiosError(error) && error.response) {
+			throw new Error(error.response.data.message || 'Request failed');
+		}
+		throw new Error('Request failed');
+	}
+};
 
-export const deleteDogRequest = async (id: string) =>
-	fetch(`${API}/${id}`, {
-		method: 'DELETE',
-	});
+// export const createDogRequest = async (dog: DogInterface) => {
+// 	try {
+// 		const response = await axiosInstance.post('/dogs', dog);
+// 		return response.data;
+// 	} catch (error) {
+// 		if (axios.isAxiosError(error) && error.response) {
+// 			throw new Error(error.response.data.message || 'Request failed');
+// 		}
+// 		throw new Error('Request failed');
+// 	}
+// };
 
-// export const updateDogRequest = async (id: string, dog: UpdateDog) =>
-// 	fetch(`${API}/${id}`, {
-// 		method: 'PUT',
-// 		body: JSON.stringify(dog),
-// 		headers: {
-// 			'Content-Type': 'application/json',
-// 		},
-// 	});
+export const deleteDogRequest = async (id: string) => {
+	try {
+		const response = await axiosInstance.delete(`/dogs/${id}`);
+		return response.data;
+	} catch (error) {
+		if (axios.isAxiosError(error) && error.response) {
+			throw new Error(error.response.data.message || 'Request failed');
+		}
+		throw new Error('Request failed');
+	}
+};
+// export const updateDogRequest = async (id: string, dog: UpdateDogDto) => {
+// 	try {
+// 		const response = await axiosInstance.put(`/dogs/${id}`, dog);
+// 		return response.data;
+// 	} catch (error) {
+// 		if (axios.isAxiosError(error) && error.response) {
+// 			throw new Error(error.response.data.message || 'Request failed');
+// 		}
+// 		throw new Error('Request failed');
+// 	}
+// };
 
-export const getDogReqById = async (id: string) => fetch(`${API}/dogs/${id}`);
+export const getDogReqById = async (id: string) => {
+	try {
+		const response = await axiosInstance.get(`/dogs/${id}`);
+		return response.data;
+	} catch (error) {
+		if (axios.isAxiosError(error) && error.response) {
+			throw new Error(error.response.data.message || 'Request failed');
+		}
+		throw new Error('Request failed');
+	}
+};

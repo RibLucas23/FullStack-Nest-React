@@ -12,12 +12,9 @@ export default function ProductDetail() {
 	const [dog, setDog] = useState<DogInterface>();
 	useEffect(() => {
 		if (id) {
-			getDogReqById(id)
-				.then((response) => response.json())
-				.then((data) => setDog(data));
+			getDogReqById(id).then((data) => setDog(data));
 		}
 	}, [id]);
-	console.log(dog);
 	return (
 		<>
 			<NavBar />
