@@ -17,7 +17,7 @@ export class Articles {
   @Prop({
     trim: true,
   })
-  imgUrl: string;
+  image: string;
 }
 
 export const ArticlesSchema = SchemaFactory.createForClass(Articles);

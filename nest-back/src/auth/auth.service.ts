@@ -78,6 +78,7 @@ export class AuthService {
     return tokens;
   }
   async logout(userId: string) {
+    console.log('asd');
     await this.authModel.updateMany(
       {
         _id: userId,

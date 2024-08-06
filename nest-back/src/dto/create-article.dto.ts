@@ -11,5 +11,5 @@ export class CreateArticleDto {
 
   @IsString()
   @IsNotEmpty()
-  imgUrl: string;
+  image: string;
 }

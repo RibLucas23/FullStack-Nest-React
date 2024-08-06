@@ -45,11 +45,12 @@ export const registerUser = async (user: ILoginPayload) => {
 
 export const logoutUser = async () => {
 	try {
-		const response = await axiosInstance.post('/auth/logout');
+		const response = await axiosInstance.post(`${API}/auth/logout`);
 		if (response.status === 200) {
 			localStorage.removeItem('access_token');
 			localStorage.removeItem('refresh_token');
 		}
+		console.log(response);
 		return response.data;
 	} catch (error) {
 		if (axios.isAxiosError(error) && error.response) {
