@@ -50,7 +50,6 @@ export const logoutUser = async () => {
 			localStorage.removeItem('access_token');
 			localStorage.removeItem('refresh_token');
 		}
-		console.log(response);
 		return response.data;
 	} catch (error) {
 		if (axios.isAxiosError(error) && error.response) {

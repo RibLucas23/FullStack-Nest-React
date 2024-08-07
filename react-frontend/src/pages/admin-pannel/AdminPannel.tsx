@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import LogoutButton from '../../components/LogoutButton';
 import DogControlPannel from './DogControlPannel';
 import ArticlesControlPannel from './ArticlesControlPannel';
+import NavBar from '../../components/layout/NavBar';
 
 export default function AdminPannel() {
 	const navigate = useNavigate();
@@ -21,6 +22,8 @@ export default function AdminPannel() {
 
 	return (
 		<>
+			<NavBar />
+
 			<main>
 				<LogoutButton />
 				<div className='flex'>

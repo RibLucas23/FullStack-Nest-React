@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { DogInterface } from '../../interfaces/dog.interface';
 import { getDogsReqLimit } from '../../api/dogs';
-import { TableContainer } from './TableContainer';
+import { DogTable } from './DogTable';
 
 export default function DogControlPannel() {
 	const [dogs, setDogs] = useState<DogInterface[]>([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(1);
-
 	useEffect(() => {
 		fetchDogs(currentPage);
 	}, [currentPage]);
@@ -23,10 +22,16 @@ export default function DogControlPannel() {
 			setCurrentPage(newPage);
 		}
 	};
+	const handleDelete = (dogToDelete: DogInterface) => {
+		console.log('eliminar producto', dogToDelete._id);
+	};
 
 	return (
 		<>
-			<TableContainer data={dogs} />
+			<DogTable
+				tableData={dogs}
+				handleDelete={(item) => handleDelete(item)}
+			/>
 			<div className='flex justify-center mt-4'>
 				<button
 					onClick={() => handlePageChange(currentPage - 1)}

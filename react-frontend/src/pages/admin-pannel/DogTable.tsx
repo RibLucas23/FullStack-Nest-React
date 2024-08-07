@@ -1,5 +1,12 @@
-export const TableContainer = ({ data }) => {
-	const headers = data.length > 0 ? Object.keys(data[0]) : [];
+import { DogInterface } from '../../interfaces/dog.interface';
+
+interface Props {
+	tableData: DogInterface[];
+	handleDelete: (dog: DogInterface) => void;
+}
+
+export const DogTable = ({ tableData, handleDelete }: Props) => {
+	const headers = tableData.length > 0 ? Object.keys(tableData[0]) : [];
 	return (
 		<div className='overflow-x-auto'>
 			<table className='min-w-full bg-white border border-gray-200'>
@@ -19,21 +26,21 @@ export const TableContainer = ({ data }) => {
 					</tr>
 				</thead>
 				<tbody>
-					{data.map((item) => (
-						<tr key={item._id}>
+					{tableData.map((dog) => (
+						<tr key={dog._id}>
 							{headers.map((header) => (
 								<td
-									key={`${item._id}-${header}`}
+									key={`${dog._id}-${header}`}
 									className='py-2 px-4 border-b border-gray-200'
 								>
 									{header === 'image' ? (
 										<img
-											src={item[header]}
-											alt={item.name}
+											src={dog[header]}
+											alt={dog.name}
 											className='w-16 h-16 object-cover'
 										/>
 									) : (
-										item[header]
+										dog[header as keyof DogInterface]
 									)}
 								</td>
 							))}
@@ -48,7 +55,10 @@ export const TableContainer = ({ data }) => {
 										<path d='M17.414 2.586a2 2 0 00-2.828 0l-1.828 1.828 2.828 2.828 1.828-1.828a2 2 0 000-2.828zm-4.828 3.414L3 15v2.5a.5.5 0 00.5.5H6l9.586-9.586-2.828-2.828z' />
 									</svg>
 								</button>
-								<button className='text-red-500 hover:text-red-700'>
+								<button
+									className='text-red-500 hover:text-red-700'
+									onClick={() => handleDelete(dog)}
+								>
 									<svg
 										xmlns='http://www.w3.org/2000/svg'
 										className='h-5 w-5'
