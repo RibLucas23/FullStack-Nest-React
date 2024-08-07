@@ -36,6 +36,8 @@ export class AuthController {
   @Post('logout')
   @HttpCode(HttpStatus.OK)
   logout(@GetCurrentUserId() userId: string) {
+    console.log('asd');
+
     return this.authService.logout(userId);
   }
 

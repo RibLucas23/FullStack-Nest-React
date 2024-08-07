@@ -11,5 +11,5 @@ export class UpdateArticle {
 
   @IsString()
   @IsOptional()
-  imgUrl: string;
+  image: string;
 }

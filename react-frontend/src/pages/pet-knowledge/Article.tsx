@@ -6,7 +6,7 @@ export const Article: React.FC<ArticleInterface> = (articlePayload) => {
 		<>
 			<article className='flex flex-col p-4 m-2 shadow-xl rounded-2xl md:w-60 lg:w-1/3  '>
 				<img
-					src={articlePayload.imgUrl}
+					src={articlePayload.image}
 					alt='dog'
 					className=' rounded-2xl mb-3'
 				/>

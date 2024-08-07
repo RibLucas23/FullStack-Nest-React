@@ -30,10 +30,15 @@ export class DogsService {
           },
         }
       : {};
-    return await this.dogsModel
+
+    const totalDocs = await this.dogsModel.countDocuments({ ...name, ...raze });
+    const totalPages = Math.ceil(totalDocs / resPerPage);
+    const data = await this.dogsModel
       .find({ ...name, ...raze })
       .limit(resPerPage)
       .skip(skip);
+
+    return { data, totalPages };
   }
 
   async create(createDog: CreateDogDto) {
