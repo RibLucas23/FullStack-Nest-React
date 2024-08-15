@@ -1,5 +1,6 @@
 import axios from 'axios';
 import axiosInstance from '../services/axios.service';
+import { DogInterface } from '../interfaces/dog.interface';
 // import { DogInterface } from '../interfaces/dog.interface';
 
 const API = import.meta.env.VITE_API_URL;
@@ -52,17 +53,17 @@ export const deleteDogRequest = async (id: string) => {
 		throw new Error('Request failed');
 	}
 };
-// export const updateDogRequest = async (id: string, dog: UpdateDogDto) => {
-// 	try {
-// 		const response = await axiosInstance.put(`/dogs/${id}`, dog);
-// 		return response.data;
-// 	} catch (error) {
-// 		if (axios.isAxiosError(error) && error.response) {
-// 			throw new Error(error.response.data.message || 'Request failed');
-// 		}
-// 		throw new Error('Request failed');
-// 	}
-// };
+export const updateDogRequest = async (id: string, dog: DogInterface) => {
+	try {
+		const response = await axiosInstance.put(`/dogs/${id}`, dog);
+		return response.data;
+	} catch (error) {
+		if (axios.isAxiosError(error) && error.response) {
+			throw new Error(error.response.data.message || 'Request failed');
+		}
+		throw new Error('Request failed');
+	}
+};
 
 export const getDogReqById = async (id: string) => {
 	try {
