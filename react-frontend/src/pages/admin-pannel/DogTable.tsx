@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { DogInterface } from '../../interfaces/dog.interface';
 
 interface Props {
@@ -45,16 +46,18 @@ export const DogTable = ({ tableData, handleDelete }: Props) => {
 								</td>
 							))}
 							<td className='py-2 px-4 border-b border-gray-200'>
-								<button className='text-blue-500 hover:text-blue-700 mr-2'>
-									<svg
-										xmlns='http://www.w3.org/2000/svg'
-										className='h-5 w-5'
-										viewBox='0 0 20 20'
-										fill='currentColor'
-									>
-										<path d='M17.414 2.586a2 2 0 00-2.828 0l-1.828 1.828 2.828 2.828 1.828-1.828a2 2 0 000-2.828zm-4.828 3.414L3 15v2.5a.5.5 0 00.5.5H6l9.586-9.586-2.828-2.828z' />
-									</svg>
-								</button>
+								<Link to={`/admin-pannel/edit-dog/${dog._id}`}>
+									<button className='text-blue-500 hover:text-blue-700 mr-2'>
+										<svg
+											xmlns='http://www.w3.org/2000/svg'
+											className='h-5 w-5'
+											viewBox='0 0 20 20'
+											fill='currentColor'
+										>
+											<path d='M17.414 2.586a2 2 0 00-2.828 0l-1.828 1.828 2.828 2.828 1.828-1.828a2 2 0 000-2.828zm-4.828 3.414L3 15v2.5a.5.5 0 00.5.5H6l9.586-9.586-2.828-2.828z' />
+										</svg>
+									</button>
+								</Link>
 								<button
 									className='text-red-500 hover:text-red-700'
 									onClick={() => handleDelete(dog)}

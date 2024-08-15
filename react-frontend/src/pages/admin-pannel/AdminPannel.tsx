@@ -27,7 +27,7 @@ export default function AdminPannel() {
 			<main>
 				<LogoutButton />
 				<div className='flex'>
-					<div
+					<button
 						className={`px-6 py-4 rounded-t-2xl ${
 							section === 'dogs'
 								? 'bg-secondary40'
@@ -36,8 +36,8 @@ export default function AdminPannel() {
 						onClick={() => handleClick('dogs')}
 					>
 						Dogs
-					</div>
-					<div
+					</button>
+					<button
 						className={`px-6 py-4 rounded-t-xl ${
 							section === 'articles'
 								? 'bg-secondary40'
@@ -46,8 +46,8 @@ export default function AdminPannel() {
 						onClick={() => handleClick('articles')}
 					>
 						Articles
-					</div>
-					<div
+					</button>
+					<button
 						className={`px-6 py-4 rounded-t-xl ${
 							section === 'users'
 								? 'bg-secondary40'
@@ -56,7 +56,7 @@ export default function AdminPannel() {
 						onClick={() => handleClick('users')}
 					>
 						Users
-					</div>
+					</button>
 				</div>
 				{section === 'dogs' && <DogControlPannel />}
 				{section === 'articles' && <ArticlesControlPannel />}
