@@ -1,6 +1,7 @@
 import axios from 'axios';
 import axiosInstance from '../services/axios.service';
 import { DogInterface } from '../interfaces/dog.interface';
+import { CreateDogInterface } from '../interfaces/createDog.interface';
 // import { DogInterface } from '../interfaces/dog.interface';
 
 const API = import.meta.env.VITE_API_URL;
@@ -30,17 +31,17 @@ export const getDogsReqLimit = async (limit: string, page: string) => {
 	}
 };
 
-// export const createDogRequest = async (dog: DogInterface) => {
-// 	try {
-// 		const response = await axiosInstance.post('/dogs', dog);
-// 		return response.data;
-// 	} catch (error) {
-// 		if (axios.isAxiosError(error) && error.response) {
-// 			throw new Error(error.response.data.message || 'Request failed');
-// 		}
-// 		throw new Error('Request failed');
-// 	}
-// };
+export const createDogRequest = async (dog: CreateDogInterface) => {
+	try {
+		const response = await axiosInstance.post('/dogs', dog);
+		return response.data;
+	} catch (error) {
+		if (axios.isAxiosError(error) && error.response) {
+			throw new Error(error.response.data.message || 'Request failed');
+		}
+		throw new Error('Request failed');
+	}
+};
 
 export const deleteDogRequest = async (id: string) => {
 	try {
