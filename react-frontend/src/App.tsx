@@ -6,6 +6,7 @@ import { loginRoute } from './pages/login/LoginRoute.tsx';
 import { registerRoute } from './pages/register/RegisterRoute.tsx';
 import { adminPannelRoute } from './pages/admin-pannel/AdminRoute.tsx';
 import { editDogPannelRoute } from './pages/admin-pannel/edit-dogs/EditDogRoute.tsx';
+import { createDogRoute } from './pages/admin-pannel/add/dog/CreateDogRoute.tsx';
 
 const router = createBrowserRouter([
 	homeRoute,
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
 	registerRoute,
 	adminPannelRoute,
 	editDogPannelRoute,
+	createDogRoute,
 ]);
 
 function App() {

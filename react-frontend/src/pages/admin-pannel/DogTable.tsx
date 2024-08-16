@@ -28,7 +28,7 @@ export const DogTable = ({ tableData, handleDelete }: Props) => {
 				</thead>
 				<tbody>
 					{tableData.map((dog) => (
-						<tr key={dog._id}>
+						<tr key={dog._id} data-key={dog._id}>
 							{headers.map((header) => (
 								<td
 									key={`${dog._id}-${header}`}
@@ -47,7 +47,10 @@ export const DogTable = ({ tableData, handleDelete }: Props) => {
 							))}
 							<td className='py-2 px-4 border-b border-gray-200'>
 								<Link to={`/admin-pannel/edit-dog/${dog._id}`}>
-									<button className='text-blue-500 hover:text-blue-700 mr-2'>
+									<button
+										className='text-blue-500 hover:text-blue-700 mr-2'
+										id={`edit-${dog._id}`}
+									>
 										<svg
 											xmlns='http://www.w3.org/2000/svg'
 											className='h-5 w-5'
@@ -60,6 +63,7 @@ export const DogTable = ({ tableData, handleDelete }: Props) => {
 								</Link>
 								<button
 									className='text-red-500 hover:text-red-700'
+									id={`delete-${dog._id}`}
 									onClick={() => handleDelete(dog)}
 								>
 									<svg

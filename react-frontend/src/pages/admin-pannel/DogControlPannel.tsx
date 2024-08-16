@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
 import { DogInterface } from '../../interfaces/dog.interface';
-import { getDogsReqLimit } from '../../api/dogs';
+import { deleteDogRequest, getDogsReqLimit } from '../../api/dogs';
 import { DogTable } from './DogTable';
+import { errorAlert, successAlert } from '../../services/toastifyAlerts';
+import { ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 export default function DogControlPannel() {
+	const navigate = useNavigate();
+
 	const [dogs, setDogs] = useState<DogInterface[]>([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(1);
@@ -22,8 +27,19 @@ export default function DogControlPannel() {
 			setCurrentPage(newPage);
 		}
 	};
-	const handleDelete = (dogToDelete: DogInterface) => {
-		console.log('eliminar producto', dogToDelete._id);
+	const handleDelete = async (dogToDelete: DogInterface) => {
+		try {
+			await deleteDogRequest(dogToDelete._id);
+			console.log('eliminar producto', dogToDelete._id);
+			successAlert('Dog Deleted!');
+			setTimeout(() => {
+				navigate(0);
+			}, 3000);
+		} catch (error) {
+			if (error instanceof Error) {
+				errorAlert(error.message);
+			} else throw error;
+		}
 	};
 
 	return (
@@ -49,6 +65,7 @@ export default function DogControlPannel() {
 					Next
 				</button>
 			</div>
+			<ToastContainer />
 		</>
 	);
 }
