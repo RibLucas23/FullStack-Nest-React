@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('Admin Panel Tests', () => {
+describe('Dogs Admin Panel Tests', () => {
 	beforeEach(() => {
 		cy.visit('/login');
 		cy.get('input[name="email"]').type('q@a.com');
@@ -27,7 +27,7 @@ describe('Admin Panel Tests', () => {
 
 		cy.url().should(
 			'include',
-			'/admin-pannel/edit-dog/66900c212f99def62344f69d',
+			'/admin-pannel/edit/dog/66900c212f99def62344f69d',
 		);
 		cy.get('input[name="name"]').clear().type('Raul edited');
 		cy.get('button[type="submit"]')
@@ -56,22 +56,17 @@ describe('Admin Panel Tests', () => {
 	});
 
 	it('should eliminate successfully a dog', () => {
-		// Navega a la siguiente página de la tabla
 		cy.get('button').contains('Next').click();
 
-		// Encuentra el TR que contiene el texto 'testing'
 		cy.get('tr')
 			.contains('td', 'testing')
 			.parent('tr')
 			.then(($row) => {
-				// Extrae el atributo data-key
 				const rowKey = $row.attr('data-key');
 				cy.log(`Dog ID to be deleted: ${rowKey}`);
 
-				// Busca y hace click en el botón de eliminación correspondiente
 				cy.get(`button#delete-${rowKey}`).click();
 
-				// Verifica que se muestra la alerta con el texto "Dog Deleted!"
 				cy.on('window:alert', (text) => {
 					expect(text).to.contains('Dog Deleted!');
 				});
