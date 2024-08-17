@@ -46,7 +46,7 @@ export const DogTable = ({ tableData, handleDelete }: Props) => {
 								</td>
 							))}
 							<td className='py-2 px-4 border-b border-gray-200'>
-								<Link to={`/admin-pannel/edit-dog/${dog._id}`}>
+								<Link to={`/admin-pannel/edit/dog/${dog._id}`}>
 									<button
 										className='text-blue-500 hover:text-blue-700 mr-2'
 										id={`edit-${dog._id}`}

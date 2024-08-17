@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { DogInterface } from '../../../interfaces/dog.interface';
-import { getDogReqById, updateDogRequest } from '../../../api/dogs';
-import NavBar from '../../../components/layout/NavBar';
-import { errorAlert, successAlert } from '../../../services/toastifyAlerts';
+import { DogInterface } from '../../../../interfaces/dog.interface';
+import { getDogReqById, updateDogRequest } from '../../../../api/dogs';
+import NavBar from '../../../../components/layout/NavBar';
+import { errorAlert, successAlert } from '../../../../services/toastifyAlerts';
 import { ToastContainer } from 'react-toastify';
 
 export default function EditDogPannel() {
